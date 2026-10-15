@@ -38,7 +38,7 @@ Este port **não é um emulador de Xbox 360**. O executável do jogo (`default.x
 - **Áudio sem falhas**, mesmo quando o FPS oscila.
 - **Painel de desempenho:** FPS, resolução e uso de CPU, GPU e RAM. Pode ser arrastado pela tela ou recolhido.
 - **Modo 16:9 ou esticado** para a tela inteira.
-- Menu inicial animado com tema do **Gaara** 🏜️: lua cheia, dunas e o vórtice de areia em volta do 愛.
+- Menu inicial animado com tema do **Gaara** 🏜️, o mesmo no celular e no PC: lua cheia, dunas e o vórtice de areia em volta do 愛.
 - **Versão de PC** com janela ou tela cheia, teclado e controles de Xbox ou PlayStation.
 
 ## 📸 Capturas
@@ -48,6 +48,8 @@ Este port **não é um emulador de Xbox 360**. O executável do jogo (`default.x
 | <img src="docs/screenshots/titulo.jpg" width="100%"> | <img src="docs/screenshots/luta.jpg" width="100%"> |
 | **Controles na tela** | **Outra arena** |
 | <img src="docs/screenshots/controles.jpg" width="100%"> | <img src="docs/screenshots/luta-vale.jpg" width="100%"> |
+| **Menu no PC** | |
+| <img src="docs/screenshots/menu-pc.jpg" width="100%"> | |
 
 ## 📱 Requisitos
 
