@@ -10,7 +10,7 @@
 ![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows&logoColor=white)
 ![Arquitetura](https://img.shields.io/badge/arm64--v8a-64%20bits-orange)
 ![Gráficos](https://img.shields.io/badge/Vulkan-1.1-AC162C?logo=vulkan&logoColor=white)
-![Versão](https://img.shields.io/badge/vers%C3%A3o-0.1-blue)
+![Versão](https://img.shields.io/badge/vers%C3%A3o-0.2-blue)
 
 [**⬇️ Baixar (Android e PC)**](../../releases/latest) · [Requisitos](#-requisitos) · [Instalação](#-instalação) · [Configurações](#%EF%B8%8F-configurações) · [Perguntas](#-perguntas-frequentes)
 
@@ -30,12 +30,14 @@ Este port **não é um emulador de Xbox 360**. O executável do jogo (`default.x
 ### ✨ Destaques
 
 - **Lutas a 30 FPS estáveis** (o limite do próprio jogo) no Poco X7 Pro, com folga de GPU.
+- **⚡ Modo desempenho (novo na v0.2):** 24 FPS estáveis e com ritmo uniforme, mais leve, para celulares que não seguram 30. Fica em destaque no topo do menu.
+- **Velocidade sempre certa (v0.2):** se o FPS cair abaixo de 30, o jogo não fica em câmera lenta: a lógica acompanha o relógio.
 - **Resoluções no celular:** 360p, 540p, 720p e 1080p (nítido). No PC também há 2K e 4K.
 - **Antisserrilhado FXAA e FXAA+** e **escala FSR 1.0 / CAS** da AMD, que podem ser ligados e desligados.
 - **Controles na tela pensados para as lutas do Storm:** soco, pulo, ferramentas ninja, chakra, defesa, substituição e os dois suportes, mais **atalhos de um toque** para jutsu (術), jutsu secreto (奥) e corrida de chakra.
 - **🎛️ Editor de controles** (botão ⚙): mova, aumente, diminua ou esconda cada botão, ajuste a transparência e escolha a **área da tela onde o analógico funciona**.
 - **Drivers de GPU customizados (Turnip)** em celulares **Snapdragon**, importados direto pelo menu.
-- **Áudio sem falhas**, mesmo quando o FPS oscila.
+- **Áudio sem picotes (v0.2):** os sons que começam com o jogo ocupado (quedas, jutsus, suportes) não engasgam mais.
 - **Painel de desempenho:** FPS, resolução e uso de CPU, GPU e RAM. Pode ser arrastado pela tela ou recolhido.
 - **Modo 16:9 ou esticado** para a tela inteira.
 - Menu inicial animado com tema do **Gaara** 🏜️, o mesmo no celular e no PC: lua cheia, dunas e o vórtice de areia em volta do 愛.
@@ -151,6 +153,7 @@ As configurações, os saves e o cache de shaders ficam na pasta onde você extr
 | **Tela: 16:9 / Esticar** | Mantém a proporção original ou estica para a tela toda | ⚪ Nenhum |
 | **Antisserrilhado: FXAA / FXAA+** | Suaviza as bordas serrilhadas | 🟠 Pesa um pouco a mais |
 | **Escala na tela: FSR / CAS** | Amplia a imagem com mais nitidez (AMD FidelityFX) | 🟠 Pesa um pouco a mais |
+| **⚡ Modo desempenho** (Android) | 24 FPS estáveis, até 540p, sem antisserrilhado e com escala simples | 🟢 Bem mais leve |
 | **Painel de FPS** | Mostra FPS, resolução, CPU, GPU e RAM | ⚪ Quase nenhum |
 | **Driver da GPU** (só Snapdragon) | Usa o driver do sistema ou um driver **Turnip** importado (`.zip` no formato AdrenoTools) | Depende do aparelho e do driver |
 
