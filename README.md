@@ -10,7 +10,7 @@
 ![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows&logoColor=white)
 ![Arquitetura](https://img.shields.io/badge/arm64--v8a-64%20bits-orange)
 ![Gráficos](https://img.shields.io/badge/Vulkan-1.1-AC162C?logo=vulkan&logoColor=white)
-![Versão](https://img.shields.io/badge/vers%C3%A3o-0.3-blue)
+![Versão](https://img.shields.io/badge/vers%C3%A3o-0.3.2-blue)
 
 [**⬇️ Baixar (Android e PC)**](../../releases/latest) · [Requisitos](#-requisitos) · [Instalação](#-instalação) · [Configurações](#%EF%B8%8F-configurações) · [Perguntas](#-perguntas-frequentes)
 
@@ -153,7 +153,7 @@ As configurações, os saves e o cache de shaders ficam na pasta onde você extr
 | **Tela: 16:9 / Esticar** | Mantém a proporção original ou estica para a tela toda | ⚪ Nenhum |
 | **Antisserrilhado: FXAA / FXAA+** | Suaviza as bordas serrilhadas | 🟠 Pesa um pouco a mais |
 | **Escala na tela: FSR / CAS** | Amplia a imagem com mais nitidez (AMD FidelityFX) | 🟠 Pesa um pouco a mais |
-| **⚡ Modo desempenho** (Android) | 24 FPS estáveis, até 540p, sem antisserrilhado e com escala simples | 🟢 Bem mais leve |
+| **⚡ Modo desempenho** | 24 FPS estáveis, até 540p, sem sombras nem brilho, texturas mais leves, sem antisserrilhado e com escala simples | 🟢 Bem mais leve |
 | **Painel de FPS** | Mostra FPS, resolução, CPU, GPU e RAM | ⚪ Quase nenhum |
 | **Driver da GPU** (só Snapdragon) | Usa o driver do sistema ou um driver **Turnip** importado (`.zip` no formato AdrenoTools) | Depende do aparelho e do driver |
 
