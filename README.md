@@ -10,7 +10,7 @@
 ![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows&logoColor=white)
 ![Arquitetura](https://img.shields.io/badge/arm64--v8a-64%20bits-orange)
 ![Gráficos](https://img.shields.io/badge/Vulkan-1.1-AC162C?logo=vulkan&logoColor=white)
-![Versão](https://img.shields.io/badge/vers%C3%A3o-0.3.5-blue)
+![Versão](https://img.shields.io/badge/vers%C3%A3o-0.4.1-blue)
 
 [**⬇️ Baixar (Android e PC)**](../../releases/latest) · [Requisitos](#-requisitos) · [Instalação](#-instalação) · [Configurações](#%EF%B8%8F-configurações) · [Perguntas](#-perguntas-frequentes)
 
@@ -22,25 +22,28 @@
 
 ## 📖 Sobre
 
-Este port **não é um emulador de Xbox 360**. O executável do jogo (`default.xex`) foi **recompilado estaticamente** de PowerPC para ARM64 (celular) e x86-64 (PC): o resultado é código nativo, que roda direto no processador. A parte gráfica usa um backend Vulkan adaptado e otimizado para GPUs de celular (Mali e Adreno), com um **render nativo** que faz as cópias e limpezas da memória de vídeo do Xbox 360 direto na GPU.
+Este port **não é um emulador de Xbox 360**. O executável do jogo (`default.xex`) foi **recompilado estaticamente** de PowerPC para ARM64 (celular) e x86-64 (PC): o resultado é código nativo, que roda direto no processador. Desde a v0.4.0 a parte gráfica usa o **shadowZero**, um renderizador nativo que pega os comandos Direct3D do jogo e desenha direto em Vulkan, sem emular a GPU do Xbox 360: o jogo fica bem mais leve e a resolução interna vai de **360p até 4K**. Em celulares cuja GPU não tem o que o shadowZero precisa, o app usa sozinho o backend Vulkan do Xenia, como nas versões anteriores.
 
 > [!IMPORTANT]
 > **O APK e o pacote de PC não contêm nenhum arquivo do jogo.** Você precisa da sua **própria cópia** de *Naruto Shippuden: Ultimate Ninja Storm Generations* para Xbox 360, na versão indicada em [Versão do jogo](#-versão-do-jogo-obrigatória).
 
 ### ✨ Destaques
 
-- **Lutas a 30 FPS estáveis** (o limite do próprio jogo) no Poco X7 Pro, com folga de GPU.
-- **⚡ Modo desempenho (novo na v0.2):** 24 FPS estáveis e com ritmo uniforme, mais leve, para celulares que não seguram 30. Fica em destaque no topo do menu.
-- **Velocidade certa no modo desempenho:** a 24 FPS o jogo não fica em câmera lenta, a lógica acompanha o relógio.
-- **Resoluções no celular:** 360p, 540p, 720p e 1080p (nítido). No PC também há 2K e 4K.
+- **Lutas a 30 FPS** (o limite do próprio jogo), com o **renderizador nativo shadowZero** (Direct3D → Vulkan).
+- **Resolução interna de 360p, 480p, 720p, 900p, 1080p, 2K e 4K** (padrão 480p). A **900p** é quase a nitidez do 1080p com bem menos peso na GPU.
+- **Brilho e cores iguais aos do Xbox 360**, abertura em vídeo e logos como no console.
+- **⚡ Modo desempenho:** tira as sombras **na resolução que você escolher**.
+- **FPS escolhido no menu:** 20, 24 ou 30, com a lógica do jogo no tempo certo (sem câmera lenta).
 - **Antisserrilhado FXAA e FXAA+** e **escala FSR 1.0 / CAS** da AMD, que podem ser ligados e desligados.
-- **Controles na tela pensados para as lutas do Storm:** soco, pulo, ferramentas ninja, chakra, defesa, substituição e os dois suportes, mais **atalhos de um toque** para jutsu (術), jutsu secreto (奥) e corrida de chakra.
-- **🎛️ Editor de controles** (botão ⚙): mova, aumente, diminua ou esconda cada botão, ajuste a transparência e escolha a **área da tela onde o analógico funciona**.
+- **Controles na tela no estilo dos jogos de Naruto para celular:** losango Y/X/B/A igual ao do controle, selos coloridos com a letra de cada botão, LT/RT/LB/RB, START e SELECT escritos, o botão **DESPERTAR** e os atalhos de **jutsu**, **jutsu secreto** e **avanço**.
+- **Dois controles:** o primeiro controle que conecta é o **jogador 1** e o segundo é o **jogador 2**, sozinhos. Em **MAPEAR** dá para trocar os botões de cada um (**Controle 1** e **Controle 2**), se quiser; sem mapear, os dois usam o padrão.
+- **Controle físico automático:** plugou um controle, os botões da tela somem; tirou, eles voltam. Pelo emblema do Shadow no canto da tela dá para **editar os botões** ou usar **toque + controle** juntos.
+- **Volta do segundo plano sem fechar:** bloquear a tela ou trocar de app e voltar não derruba mais o jogo.
+- **Atualização automática:** ao abrir o menu, o app avisa quando sai versão nova aqui no GitHub e já baixa e instala (a partir da v0.4.0; quem tem a v0.3.x atualiza na mão uma vez).
 - **Drivers de GPU customizados (Turnip)** em celulares **Snapdragon**, importados direto pelo menu.
-- **Áudio sem picotes (v0.2):** os sons que começam com o jogo ocupado (quedas, jutsus, suportes) não engasgam mais.
 - **Painel de desempenho:** FPS, resolução e uso de CPU, GPU e RAM. Pode ser arrastado pela tela ou recolhido.
 - **Modo 16:9 ou esticado** para a tela inteira.
-- Menu inicial animado com tema do **Gaara** 🏜️, o mesmo no celular e no PC: lua cheia, dunas e o vórtice de areia em volta do 愛.
+- Menu inicial animado com tema do **Gaara** 🏜️: lua cheia, dunas e o vórtice de areia em volta do 愛.
 - **Versão de PC** com janela ou tela cheia, teclado e controles de Xbox ou PlayStation.
 
 ## 📸 Capturas
@@ -146,43 +149,46 @@ As configurações, os saves e o cache de shaders ficam na pasta onde você extr
 
 | Opção | O que faz | Impacto no desempenho |
 |---|---|---|
-| **Resolução 360p / 540p** | Renderiza com menos pixels | 🟢 Mais FPS: ideal para celulares mais fracos |
-| **Resolução 720p** | Resolução original do Xbox 360 | ⚪ Padrão |
+| **Resolução 360p / 480p** | Renderiza com menos pixels (480p é o padrão) | 🟢 Mais FPS: ideal para celulares mais fracos |
+| **Resolução 720p** | Resolução original do Xbox 360 | ⚪ Médio |
+| **Resolução 900p** | Quase a nitidez do 1080p com bem menos pixels (1600x900) | 🟡 Ponto de equilíbrio para celulares fortes |
 | **Resolução 1080p** | Imagem mais nítida na tela do celular | 🟠 Pesa um pouco a mais |
-| **Resolução 2K / 4K** (PC) | Renderiza com 4x a 9x mais pixels | 🔴 Bem mais pesado |
+| **Resolução 2K / 4K** | Renderiza com 4x a 9x mais pixels | 🔴 Bem mais pesado |
+| **FPS: 20 / 24 / 30** | Limite de quadros por segundo (30 é o do jogo) | 🟢 20 e 24 deixam o aparelho mais folgado |
 | **Tela: 16:9 / Esticar** | Mantém a proporção original ou estica para a tela toda | ⚪ Nenhum |
 | **Antisserrilhado: FXAA / FXAA+** | Suaviza as bordas serrilhadas | 🟠 Pesa um pouco a mais |
 | **Escala na tela: FSR / CAS** | Amplia a imagem com mais nitidez (AMD FidelityFX) | 🟠 Pesa um pouco a mais |
-| **⚡ Modo desempenho** | 24 FPS estáveis, até 540p, sem sombras, texturas mais leves, sem antisserrilhado e com escala simples | 🟢 Bem mais leve |
+| **⚡ Modo desempenho** | Sem sombras e sem antisserrilhado, na resolução que você escolher | 🟢 Mais leve |
+| **Brilho: Normal / +1 / +2** | Clareia os tons médios sem estourar o branco nem o preto | ⚪ Nenhum |
 | **Painel de FPS** | Mostra FPS, resolução, CPU, GPU e RAM | ⚪ Quase nenhum |
+| **MAPEAR** | Troca os botões do **Controle 1** e do **Controle 2** (opcional) | ⚪ Nenhum |
 | **Driver da GPU** (só Snapdragon) | Usa o driver do sistema ou um driver **Turnip** importado (`.zip` no formato AdrenoTools) | Depende do aparelho e do driver |
 
 > [!NOTE]
-> Se o FPS cair, use **Antisserrilhado: Off** e **Escala: Normal** e baixe a resolução.
+> Se o FPS cair, ligue o **⚡ Modo desempenho**, ou use **Antisserrilhado: Off** e **Escala: Normal** e baixe a resolução.
 
 ## 🎮 Controles
 
 - **Andar:** encoste o dedo na área do analógico (por padrão, a **metade esquerda** da tela). O analógico aparece ali e segue o dedo.
-- **Botões** (com a letra do controle num selinho, porque as dicas do jogo falam "aperte B"):
+- **Botões:** losango igual ao do controle (Y em cima, X à esquerda, B à direita, A embaixo), cada um com um selo colorido da letra (A verde, B vermelho, X azul, Y amarelo), porque as dicas do jogo falam "aperte B".
 
-| Ícone | Botão | Na luta |
-|---|---|---|
-| 👊 Punho (o maior) | B | Ataque |
-| 🦘 Pulo | A | Pular |
-| ✴️ Shuriken | X | Ferramentas ninja |
-| 🌀 Espiral | Y | Chakra |
-| 🛡️ Escudo (hexágono) | RT | Defesa |
-| 🪵 Tronco (hexágono) | LT | Substituição |
-| 👥 Suportes | LB / RB | Chamar os suportes |
-| 術 (atalho) | Y, B | Jutsu |
-| 奥 (atalho) | Y, Y, B | Jutsu secreto |
-| 🏃 (atalho) | Y, A | Corrida de chakra |
-| Direcional | ↑ ↓ ← → | Itens |
-| ☰ / ⏸️ | BACK / START | Menu / pausa |
+| Botão | Na luta |
+|---|---|
+| B (o maior) | Ataque |
+| A | Pular |
+| X | Ferramentas ninja |
+| Y | Chakra |
+| RT | Defesa |
+| LT | Substituição |
+| LB / RB | Chamar os suportes |
+| DESPERTAR (覚) | Analógico direito para o lado (despertar) |
+| JUTSU / OUGI / AVANÇO (atalhos) | Y B / Y Y B / Y A |
+| Direcional ↑ ↓ ← → | Itens |
+| SELECT / START | Menu / pausa |
 
-- **⚙ Editor de controles:** toque na engrenagem no topo. Arraste os botões, toque num deles para mudar o tamanho ou escondê-lo, ajuste a transparência e arraste os cantos do retângulo para mudar a área do analógico. **Restaurar padrão** volta tudo ao original.
-- O botão do **olho** esconde os controles e o **⇔** alterna entre 16:9 e tela esticada.
-- **Controle físico:** controles Bluetooth e USB compatíveis com Android são reconhecidos automaticamente.
+- **Emblema do Shadow** (canto da tela): toque para abrir **Editar botões** (arraste os botões; "Tamanho" sem botão escolhido muda todos de uma vez, com um botão escolhido muda só ele) ou ligar **Toque + controle**.
+- **Controle físico:** controles Bluetooth e USB compatíveis com Android são reconhecidos automaticamente e os botões da tela somem enquanto ele estiver ligado.
+- **Dois controles:** o primeiro que conecta é o jogador 1, o segundo é o jogador 2. Na tela **MAPEAR** do menu, escolha **Controle 1** ou **Controle 2** e toque numa ação para trocar o botão daquele controle.
 
 ### 🖥️ PC
 
