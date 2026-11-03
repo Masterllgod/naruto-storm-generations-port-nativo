@@ -10,7 +10,7 @@
 ![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows&logoColor=white)
 ![Arquitetura](https://img.shields.io/badge/arm64--v8a-64%20bits-orange)
 ![Gráficos](https://img.shields.io/badge/Vulkan-1.1-AC162C?logo=vulkan&logoColor=white)
-![Versão](https://img.shields.io/badge/vers%C3%A3o-0.4.1-blue)
+![Versão](https://img.shields.io/badge/vers%C3%A3o-0.4.16-blue)
 
 [**⬇️ Baixar (Android e PC)**](../../releases/latest) · [Requisitos](#-requisitos) · [Instalação](#-instalação) · [Configurações](#%EF%B8%8F-configurações) · [Perguntas](#-perguntas-frequentes)
 
@@ -39,6 +39,9 @@ Este port **não é um emulador de Xbox 360**. O executável do jogo (`default.x
 - **Dois controles:** o primeiro controle que conecta é o **jogador 1** e o segundo é o **jogador 2**, sozinhos. Em **MAPEAR** dá para trocar os botões de cada um (**Controle 1** e **Controle 2**), se quiser; sem mapear, os dois usam o padrão.
 - **Controle físico automático:** plugou um controle, os botões da tela somem; tirou, eles voltam. Pelo emblema do Shadow no canto da tela dá para **editar os botões** ou usar **toque + controle** juntos.
 - **Volta do segundo plano sem fechar:** bloquear a tela ou trocar de app e voltar não derruba mais o jogo.
+- **Gerar quadros (AMD FG):** Off / 2x / 3x / 4x. O jogo roda a 30 FPS e a tela recebe 60, 90 ou 120 quadros por segundo. Modo **Desempenho** (leve, o mesmo do Storm 4 de PC) ou **Qualidade**, e **Tela (Hz)** Auto / 60 / 90 / 120. Feito sobre o fluxo óptico da AMD adaptado para celular (Mali, Adreno e Xclipse), sem arquivo externo.
+- **Sem congelamentos no ARM:** corrigido o anel de comandos da GPU que travava o jogo depois de alguns minutos (às vezes com o erro `0x0BADF00D`) em celulares e tablets.
+- **Android 11 e 12:** o app não fecha mais ao abrir com a internet ligada.
 - **Atualização automática:** ao abrir o menu, o app avisa quando sai versão nova aqui no GitHub e já baixa e instala (a partir da v0.4.0; quem tem a v0.3.x atualiza na mão uma vez).
 - **Drivers de GPU customizados (Turnip)** em celulares **Snapdragon**, importados direto pelo menu.
 - **Painel de desempenho:** FPS, resolução e uso de CPU, GPU e RAM. Pode ser arrastado pela tela ou recolhido.
@@ -259,6 +262,7 @@ Este projeto só foi possível graças a estes projetos de código aberto:
 - [**SDL 3**](https://github.com/libsdl-org/SDL): janela, entrada e áudio
 - [**FFmpeg**](https://ffmpeg.org): decodificação de áudio XMA
 - [**AMD FidelityFX FSR / CAS**](https://github.com/GPUOpen-Effects): escala e nitidez
+- [**AMD FidelityFX SDK**](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK) (MIT): fluxo óptico e interpolação da geração de quadros
 - [**libadrenotools**](https://github.com/bylaws/libadrenotools): drivers de GPU customizados no Android
 
 As licenças completas estão em [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) e também dentro do app, no link **"Licenças"** do menu.
